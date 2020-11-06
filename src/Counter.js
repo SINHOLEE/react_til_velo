@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import FunctionalComponent from "./FunctionalComponent";
+import "./App.css";
 
 class Counter extends Component {
   //   state사용하는 첫번째 방법
@@ -20,6 +22,7 @@ class Counter extends Component {
 
     const onClickHandler = (e) => {
       console.log(e);
+      console.log(props_num);
       //   this.setState({ num: num + 1 });
       //   this.setState((ps) => {
       //     return { num: ps.num + 1 };
@@ -37,11 +40,15 @@ class Counter extends Component {
       //     num: ps.num + 1,
       //   }));
     };
+
     return (
       <>
         <div>{cnt}</div>
         <div>Counter에서의 num {num}</div>
         <button onClick={onClickHandler}>+1</button>
+        <div className="div-box">
+          <FunctionalComponent></FunctionalComponent>
+        </div>
       </>
     );
   }

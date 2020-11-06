@@ -5,3 +5,7 @@
   font-weight: bold;
   padding: 16px;
 }
+
+.div-box {
+  border: 1px solid plum;
+}
