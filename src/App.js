@@ -17,7 +17,7 @@ function App() {
         {/* 오호 주석은 여기에! */}
         <div></div>
       </div>
-      <MyComponent></MyComponent>
+      <MyComponent num={1}></MyComponent>
       <AnotherComponent name="지수" myNum={["arr", "zzz", "bbb"]}>
         <div>컴포넌트 사이 </div>
       </AnotherComponent>
