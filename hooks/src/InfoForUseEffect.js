@@ -9,7 +9,7 @@ const onChangeReducer = (state, action) => {
   };
 };
 
-const Info = () => {
+const InfoForUseEffect = () => {
   //   const [name, setName] = useState("");
   //   const [nickName, setNickName] = useState("");
   const [state, dispatch] = useReducer(onChangeReducer, {
@@ -65,4 +65,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default InfoForUseEffect;

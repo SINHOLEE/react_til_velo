@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Average from "./Average";
-import Info from "./Info";
+import InfoForUseEffect from "./InfoForUseEffect";
+import InfoForCustomHooks from "./InfoForCustomHooks";
 import Counter from "./Counter";
+
 import "./App.css";
 
 function App() {
@@ -14,8 +16,9 @@ function App() {
     <div>
       <Counter></Counter>
       <button onClick={onClick}>{visuable ? "숨기기" : "보이기"}</button>
-      {visuable ? <Info></Info> : null}
+      {visuable ? <InfoForUseEffect></InfoForUseEffect> : null}
       <Average></Average>
+      <InfoForCustomHooks></InfoForCustomHooks>
     </div>
   );
 }
