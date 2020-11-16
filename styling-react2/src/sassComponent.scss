@@ -1,0 +1,35 @@
+@import "./styles/utils.scss";
+
+.SassComponent {
+  display: flex;
+  .box {
+    background: red;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+    &.red {
+      // .red와 함께 사용 되었다면
+      background: $red;
+      @include squre(1); // 네모상자 크기는 32px
+    }
+    &.orange {
+      background: $orange;
+      @include squre(2);
+    }
+    &.yellow {
+      background: $yellow;
+      @include squre(3);
+    }
+    &.green {
+      background: $green;
+      @include squre(4);
+    }
+    &.blue {
+      background: $blue;
+      @include squre(5);
+    }
+
+    &:hover {
+      background: ivory;
+    }
+  }
+}
