@@ -1,7 +1,7 @@
 import React from 'react';
 import './TodoList.scss';
 import TodoListItem from './TodoListItem';
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
   return (
     <div className="TodoList">
       {todos.map((todo) => (
@@ -11,6 +11,8 @@ const TodoList = ({ todos }) => {
           // checked={todo.checked}
           // text={todo.text}
           todo={todo}
+          onRemove={onRemove} // 이 콜백함수를 사용하기 위해서, app => list => listItem순으로 거쳐야 함
+          onToggle={onToggle}
         ></TodoListItem>
       ))}
     </div>
