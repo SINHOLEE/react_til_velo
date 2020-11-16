@@ -3,14 +3,23 @@ import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import TodoTemplate from './components/TodoTemplate';
 
+function createBulkTodos() {
+  const arr = [];
+  for (let id = 0; id < 9000; id++) {
+    arr.push({
+      id,
+      text: `할 일${id}`,
+      checked: false,
+    });
+  }
+  return arr;
+}
+
 function App() {
   // 해당 state를 관리하는 component 의 메소드는 해당 component에서 생성하고 자식 컴포넌트에게 내려준다.
   // 만약 부모 혹은 조상 component에서 어떤 값이 내려오는 props가 현재 state와 충돌이 일어날 상황이 있다면? 어떻게해야하지
 
-  const [todos, setTodos] = useState([
-    { id: 1, text: '허버버ㅓ', checked: false },
-    { id: 2, text: '이럴수가', checked: true },
-  ]);
+  const [todos, setTodos] = useState(createBulkTodos());
   const onToggle = useCallback(
     (id) => {
       const nextTodos = todos.map((todo) =>
