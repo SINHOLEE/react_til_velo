@@ -1,5 +1,9 @@
 .SassComponent {
   display: flex;
+  background: $oc-lime-2;
+  @include media("<480px") {
+    background: $oc-lime-9;
+  }
   .box {
     background: red;
     cursor: pointer;

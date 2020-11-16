@@ -1,0 +1,18 @@
+.wrapper {
+  background: white;
+  padding: 1rem;
+  color: blue;
+  font-size: 2rem;
+  &.inverted {
+    background: chocolate;
+  }
+}
+
+.box {
+  display: flex;
+}
+
+:global .something {
+  font-weight: 800;
+  color: brown;
+}
