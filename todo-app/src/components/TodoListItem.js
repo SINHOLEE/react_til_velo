@@ -7,7 +7,7 @@ import {
 } from 'react-icons/md';
 import './TodoListItem.scss';
 
-const TodoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
   const { id, checked, text } = todo; // 객체 비구조화 할당
   // const onClick = (e) => {
   //   const result = window.confirm('지우실건가요?');
@@ -18,25 +18,25 @@ const TodoListItem = ({ todo, onRemove, onToggle }) => {
   // };
 
   return (
-    <div className="TodoListItem">
-      <div className={cn('checkboxWrapper', { checked })}>
+    <div className="TodoListItem-virtualized" style={style}>
+      <div className="TodoListItem">
         <div
-          className={cn('checkbox')}
+          className={cn('checkbox', { checked })}
           onClick={() => {
             onToggle(id);
           }}
         >
           {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+          <div className="text">{text}</div>
         </div>
-        <div className={cn('text')}>{text}</div>
-      </div>
-      <div
-        className="remove"
-        onClick={() => {
-          onRemove(id);
-        }}
-      >
-        <MdRemoveCircleOutline></MdRemoveCircleOutline>
+        <div
+          className="remove"
+          onClick={() => {
+            onRemove(id);
+          }}
+        >
+          <MdRemoveCircleOutline></MdRemoveCircleOutline>
+        </div>
       </div>
     </div>
   );
@@ -46,4 +46,7 @@ const TodoListItem = ({ todo, onRemove, onToggle }) => {
 // app.js에서 onToggle과 onRemove에 useCallback을 사용해서 첫번째 랜더링에서만 생성하도록 하게 했지만, todos가 바뀌면서 발생하는
 // 리랜더링에서는 onRemove와 onToggle이 새로 생성되므로 리랜더링이 발생할 수 밖에 없다.
 // 해결할 수 있는방법은 두가지, 1) useState 함수형 업데이트, 2) reducer를 이용한 state관리
-export default React.memo(TodoListItem);
+export default React.memo(
+  TodoListItem,
+  (prevProps, nextProps) => prevProps.todo === nextProps.todo,
+);

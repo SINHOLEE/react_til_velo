@@ -1,21 +1,36 @@
-import React from 'react';
-import './TodoList.scss';
+import React, { useCallback } from 'react';
+import { List } from 'react-virtualized';
 import TodoListItem from './TodoListItem';
+import './TodoList.scss';
+
 const TodoList = ({ todos, onRemove, onToggle }) => {
-  return (
-    <div className="TodoList">
-      {todos.map((todo) => (
+  const rowRenderer = useCallback(
+    ({ index, key, style }) => {
+      console.log(key, ' ', style);
+      const todo = todos[index];
+      return (
         <TodoListItem
-          key={todo.id}
-          // todo객체를 한번에 넘겨줘도 되고, 각각의 attributes를 따로 보내도 된다.
-          // checked={todo.checked}
-          // text={todo.text}
           todo={todo}
-          onRemove={onRemove} // 이 콜백함수를 사용하기 위해서, app => list => listItem순으로 거쳐야 함
+          key={key}
+          onRemove={onRemove}
           onToggle={onToggle}
-        ></TodoListItem>
-      ))}
-    </div>
+          style={style}
+        />
+      );
+    },
+    [todos, onRemove, onToggle],
+  );
+
+  return (
+    <List
+      className="TodoList"
+      width={512}
+      height={700}
+      rowCount={todos.length}
+      rowHeight={57}
+      rowRenderer={rowRenderer}
+      list={todos}
+    ></List>
   );
 };
 

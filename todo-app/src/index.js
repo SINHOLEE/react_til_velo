@@ -7,8 +7,8 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    {/* <AppUsingReducer /> */}
+    {/* <App /> */}
+    <AppUsingReducer />
   </React.StrictMode>,
   document.getElementById('root'),
 );

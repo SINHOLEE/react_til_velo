@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, useReducer } from 'react';
+import React, { useCallback, useRef, useReducer } from 'react';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import TodoTemplate from './components/TodoTemplate';
@@ -25,10 +25,12 @@ function reducer(todos, action) {
       return todos.map((todo) =>
         todo.id === action.id ? { ...todo, checked: !todo.checked } : todo,
       );
+    default:
+      return todos;
   }
 }
 
-function App() {
+const App = () => {
   // 해당 state를 관리하는 component 의 메소드는 해당 component에서 생성하고 자식 컴포넌트에게 내려준다.
   // 만약 부모 혹은 조상 component에서 어떤 값이 내려오는 props가 현재 state와 충돌이 일어날 상황이 있다면? 어떻게해야하지
 
@@ -52,7 +54,6 @@ function App() {
   const onRemove = useCallback((id) => {
     dispatch({ type: 'REMOVE', id });
   }, []);
-  console.log('rendered');
   return (
     <TodoTemplate>
       <TodoInsert onInsert={onInsert}></TodoInsert>
@@ -63,6 +64,6 @@ function App() {
       ></TodoList>
     </TodoTemplate>
   );
-}
+};
 
 export default App;
