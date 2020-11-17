@@ -5,16 +5,25 @@
   &:nth-child(even) {
     background: #f8f9fa;
   }
-  .checkbox {
-    cursor: pointer;
-    flex: 1;
+  .checkboxWrapper {
     display: flex;
+    flex: 1;
     align-items: center;
-    svg {
-      font-size: 1.5rem;
+    .checkbox {
+      display: flex;
+      cursor: pointer;
+      align-items: center;
     }
     .text {
+      display: flex;
       margin-left: 0.5rem;
+      &.checked {
+        color: #adb5bd;
+        text-decoration: line-through;
+      }
+    }
+    svg {
+      font-size: 1.5rem;
     }
     // class 상태 변화를 이용한 view 변경
     &.checked {

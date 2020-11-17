@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { MdAdd } from 'react-icons/md';
 import './TodoInsert.scss';
 
@@ -7,7 +7,9 @@ const TodoInsert = ({ onInsert }) => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      onInsert(value);
+      if (value !== '') {
+        onInsert(value);
+      }
       setValue('');
     },
     [value, onInsert], // 여기서 왜 onInsert까지 들어나는가?
