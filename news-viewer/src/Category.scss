@@ -1,0 +1,28 @@
+.categories-box {
+  display: flex;
+  padding: 1rem;
+  width: 768px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .category {
+    margin-right: 0.5rem;
+    &:hover {
+      color: rosybrown;
+    }
+    &.active {
+      font-weight: 600;
+      border-bottom: 2px solid #22b8cf;
+      color: #22b8cf;
+      &:hover {
+        color: #3bc9db;
+      }
+    }
+  }
+}

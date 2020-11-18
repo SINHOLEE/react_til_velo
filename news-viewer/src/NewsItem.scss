@@ -1,0 +1,38 @@
+.newsitem-box {
+  display: flex;
+  .newsitem-thumbnail {
+    margin-right: 1rem;
+    img {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+    }
+  }
+  & + & {
+    margin-top: 3rem;
+  }
+  .newsitem-content {
+    max-height: 150px;
+    margin-right: 1rem;
+    // overflow: hidden;
+    h2 {
+      max-height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+      margin: 0;
+      color: black;
+
+      &:hover {
+        color: gray;
+      }
+    }
+    p {
+      margin: 0;
+      max-height: 120px;
+      line-height: 1.5;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+  }
+}
