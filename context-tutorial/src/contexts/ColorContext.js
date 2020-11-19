@@ -1,6 +1,14 @@
 import {createContext, useState} from "react";
 
-const ColorContext = createContext({});
+const ColorContext = createContext({
+  state: {
+    subColor: "",
+  },
+  action: {
+    setColor: () => {},
+    setSubColor: () => {},
+  },
+});
 
 const ColorProvider = ({children}) => {
   const [color, setColor] = useState("red");
