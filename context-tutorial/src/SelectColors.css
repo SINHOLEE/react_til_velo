@@ -1,0 +1,3 @@
+.color-list > div:hover {
+  outline: 1px solid black;
+}
