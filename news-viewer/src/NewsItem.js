@@ -1,15 +1,14 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import './NewsItem.scss';
 
 const NewsItem = ({ article }) => {
   const { url, urlToImage, title, description } = article;
-  console.log('news');
   return (
     <section className="newsitem-box">
       {urlToImage && (
         <div className="newsitem-thumbnail">
           <a href={url}>
-            <img src={urlToImage}></img>
+            <img src={urlToImage} alt="thumbnail img"></img>
           </a>
         </div>
       )}
@@ -23,5 +22,5 @@ const NewsItem = ({ article }) => {
   );
 };
 
-// export default React.memo(NewsItem);
-export default NewsItem;
+export default React.memo(NewsItem);
+// export default NewsItem;

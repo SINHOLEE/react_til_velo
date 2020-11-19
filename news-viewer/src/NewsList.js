@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './NewsList.scss';
 import NewsItem from './NewsItem';
 
 import axios from 'axios';
-import Category from './Category';
+import usePromise from './lib/usePromise';
 
 const getNewsByCategory = async (category) => {
   try {
@@ -13,39 +13,31 @@ const getNewsByCategory = async (category) => {
     return res.data.articles;
   } catch (e) {
     alert(e);
+    throw new Error('뉴스데이터 가저오는데 실패했습니다.');
   }
 };
 const NewsList = ({ category }) => {
-  const [articles, setArticles] = useState(null);
-  const [loading, setLoading] = useState(false);
-  console.log('list', category);
+  // const [loading, setLoading] = useState(false);
+  const [loading, articles, error] = usePromise(getNewsByCategory, [category], category);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        setArticles(await getNewsByCategory(category));
-      } catch (e) {
-        alert(e);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [category]);
   if (loading) {
     return <div>로딩중...</div>;
+  }
+  if (error) {
+    return <div>{error}</div>;
   }
   // 맨 처음 랜더링 할 때, 아티클이 아무것도 없는데 map을 돌면 문제가 생기므로 아무것도 랜더링 하지 않고 시작.
   if (!articles) {
     return null;
+  } else {
+    return (
+      <div className="newslist-block">
+        {articles.map((article) => (
+          <NewsItem key={article.url} article={article}></NewsItem>
+        ))}
+      </div>
+    );
   }
-  return (
-    <div className="newslist-block">
-      {articles.map((article) => (
-        <NewsItem key={article.url} article={article}></NewsItem>
-      ))}
-    </div>
-  );
 };
 
 export default NewsList;

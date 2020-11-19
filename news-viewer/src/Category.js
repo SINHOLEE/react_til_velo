@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Category.scss';
 
 const categories = [
@@ -12,21 +13,22 @@ const categories = [
   { text: '기술', name: 'technology' },
 ];
 
-const Category = ({ category, onSelect }) => {
-  console.log('ca', category);
+const Category = () => {
   return (
     <div className="categories-box">
       {categories.map((cate) => {
         return (
-          <div
+          <NavLink
             key={cate.name}
-            className={cate.name === category ? 'category active' : 'category'}
-            onClick={() => {
-              onSelect(cate.name);
-            }}
+            className="category"
+            activeClassName="active"
+            // exact={cate.name === 'all'}
+            exact={true}
+            // className={cate.name === category ? 'category active' : 'category'}
+            to={cate.name === 'all' ? '/' : `/${cate.name}`}
           >
             {cate.text}
-          </div>
+          </NavLink>
         );
       })}
     </div>
