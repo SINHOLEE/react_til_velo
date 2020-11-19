@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"vanilla-redux.9ad09f98.css","sourceRoot":"..","sourcesContent":[".toggle {\n  border: 1px solid black;\n  width: 100px;\n  height: 100px;\n  border-radius: 50px;\n  box-sizing: border-box;\n}\n.toggle.active {\n  background: chocolate;\n}\n"]}
